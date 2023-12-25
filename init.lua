@@ -41,9 +41,15 @@ P.S. You can delete this when you're done too. It's your config now :)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+local version = _VERSION:match("%d+%.%d+")
+local luarocks_path = vim.fn.expand("$HOME") .. "/.luarocks/share/lua/" .. version
+package.path = package.path .. ";" .. luarocks_path .. "/?/init.lua;"
+package.path = package.path .. ";" .. luarocks_path .. "/?.lua;"
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
+
+-- Example for configuring Neovim to load user-installed installed Lua rocks:
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system {
@@ -98,12 +104,8 @@ require('lazy').setup({
       'hrsh7th/cmp-nvim-lsp',
       'L3MON4D3/LuaSnip',
       'saadparwaiz1/cmp_luasnip',
-      'hrsh7th/cmp-emoji',
-      'rafamadriz/friendly-snippets'
+      'hrsh7th/cmp-emoji'
     },
-    config = function()
-      require("luasnip.loaders.from_vscode").lazy_load()
-    end
   },
 
   -- Useful plugin to show you pending keybinds.
@@ -261,8 +263,8 @@ end, { desc = '[F]ind [I]con' })
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'tsx', 'typescript',
-    'rust', 'vimdoc', 'vim', 'bash', 'json', 'javascript', 'make'
+  ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python',
+    'rust', 'vimdoc', 'vim', 'bash', 'json', 'javascript', 'make', 'markdown', 'markdown_inline'
   },
   modules = {},
   ignore_install = {},
