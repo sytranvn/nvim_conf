@@ -35,12 +35,12 @@ return {
         }
       },
       winbar = {
-        lualine_c = { breadcrumb },
+        lualine_c = {},
       },
       inactive_winbar = {
       },
       tabline = {
-        lualine_a = { 'filename' },
+        lualine_a = { breadcrumb },
         lualine_b = {},
         lualine_c = {},
         lualine_x = {},
