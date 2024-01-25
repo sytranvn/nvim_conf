@@ -384,7 +384,7 @@ cmp.setup {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
     { name = 'emoji' },
-    { name = 'copilot' },
+    { name = 'copilot', priority = 2 },
   },
 }
 
