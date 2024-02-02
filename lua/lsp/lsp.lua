@@ -17,10 +17,29 @@ local servers = {
       },
       pylint = {
         enabled = false
-      }
+      },
+      pycodestyle = {
+        enalbed = false
+      },
+      black = {
+        enabled = true,
+        line_length = 120
+      },
     }
   },
-  -- pyright = {},
+  pyright = {
+    python = {
+      analysis = {
+        useLibraryCodeForTypes = true,
+        diagnosticSeverityOverrides = {
+          reportGeneralTypeIssues = false,
+          reportOptionalMemberAccess = false,
+          reportOptionalSubscript = false,
+          reportPrivateImportUsage = false,
+        }
+      }
+    },
+  },
   -- rust_analyzer = {},
   tsserver = {},
   lua_ls = {
@@ -40,6 +59,14 @@ local on_attach = function(client, bufnr)
     end
 
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
+  end
+
+  local rc = client.server_capabilities
+
+  if client.name == 'pyright' then
+    rc.hover = false
+    rc.definition = false
+    rc.signature_help = false
   end
 
   if client.server_capabilities.documentSymbolProvider then
