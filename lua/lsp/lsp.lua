@@ -36,6 +36,7 @@ local servers = {
           reportOptionalMemberAccess = false,
           reportOptionalSubscript = false,
           reportPrivateImportUsage = false,
+          reportOptionalCall = false,
         }
       }
     },
