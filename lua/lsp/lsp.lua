@@ -69,6 +69,7 @@ local on_attach = function(client, bufnr)
     rc.hover = false
     rc.definition = false
     rc.signature_help = false
+    rc.renameProvider = false
   end
 
   if client.server_capabilities.documentSymbolProvider then
