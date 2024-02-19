@@ -26,26 +26,9 @@ return {
           'progress',
           'location'
         },
-        lualine_z = {
-          {
-            'datetime',
-            -- options: default, us, uk, iso, or your own format string ("%H:%M", etc..)
-            style = " %H:%M"
-          },
-        }
-      },
-      winbar = {
-        lualine_c = {},
-      },
-      inactive_winbar = {
       },
       tabline = {
         lualine_a = { breadcrumb },
-        lualine_b = {},
-        lualine_c = {},
-        lualine_x = {},
-        lualine_y = {},
-        lualine_z = {}
       }
     })
     vim.api.nvim_create_user_command("BuffCloseOthers", function()
