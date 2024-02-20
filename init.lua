@@ -383,10 +383,10 @@ cmp.setup {
     end, { 'i', 's' }),
   },
   sources = {
-    { name = 'nvim_lsp' },
+    { name = 'nvim_lsp', priority = 1 },
     { name = 'luasnip' },
     { name = 'emoji' },
-    { name = 'copilot', priority = 2 },
+    { name = 'copilot',  priority = 2 },
   },
 }
 
