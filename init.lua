@@ -227,6 +227,9 @@ require('telescope').setup {
         ['<C-u>'] = false,
         ['<C-d>'] = false,
       },
+      n = {
+        ['d'] = "delete_buffer"
+      }
     },
   },
 }
