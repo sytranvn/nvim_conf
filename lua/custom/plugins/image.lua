@@ -2,6 +2,8 @@
 -- luarocks install --local magick
 -- Install MagicWand dev headers
 -- sudo apt install libmagickwand-dev
+
+local version = _VERSION:match("%d+%.%d+")
 return {
   "3rd/image.nvim",
   config = function()
@@ -34,7 +36,7 @@ return {
       hijack_file_patterns = { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp" }, -- render image files as images when opened
     })
   end,
-  build = "luarocks --lua-version=5.1 install magick",
+  build = "luarocks --lua-version=" .. version .. " install magick",
   enabled = function()
     return true -- jit.os == "Linux"
   end

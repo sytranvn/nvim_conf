@@ -27,8 +27,13 @@ return {
           'location'
         },
       },
-      tabline = {
-        lualine_a = { breadcrumb },
+      winbar = {
+        lualine_a = { { 'filename', path = 1 } },
+        lualine_c = { breadcrumb }
+      },
+      inactive_winbar = {
+        lualine_a = { { 'filename', path = 1 } },
+        lualine_c = { breadcrumb }
       }
     })
     vim.api.nvim_create_user_command("BuffCloseOthers", function()

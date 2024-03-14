@@ -38,6 +38,7 @@ local servers = {
           reportPrivateImportUsage = false,
           reportOptionalCall = false,
           reportOptionalOperand = false,
+          reportMissingImports = false,
         }
       }
     },
