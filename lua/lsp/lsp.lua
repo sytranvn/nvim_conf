@@ -51,7 +51,9 @@ local servers = {
       telemetry = { enable = false },
     },
   },
-  jsonls = {}
+  jsonls = {
+
+  }
 }
 
 --  This function gets run when an LSP connects to a particular buffer.

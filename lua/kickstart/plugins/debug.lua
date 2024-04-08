@@ -13,6 +13,7 @@ return {
   dependencies = {
     -- Creates a beautiful debugger UI
     'rcarriga/nvim-dap-ui',
+    'theHamsta/nvim-dap-virtual-text',
 
     -- Installs the debug adapters for you
     'williamboman/mason.nvim',
@@ -104,9 +105,13 @@ return {
         args = { "--port", "${port}" },
       }
     }
+
+    require('dap.ext.vscode').load_launchjs()
+
     -- Install golang specific config
     require('dap-go').setup()
     require('debug.python')
     require('debug.codelldb')
+    require('nvim-dap-virtual-text').setup({})
   end,
 }

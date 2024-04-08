@@ -63,7 +63,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("sytd")
 
 -- NOTE: Here is where you install your plugins.
 --  You can configure plugins using the `config` key.
@@ -197,6 +196,7 @@ require('lazy').setup({
   { import = 'custom.plugins' },
 }, {})
 
+require("sytd")
 -- [[ Basic Keymaps ]]
 
 -- Keymaps for better default experience
