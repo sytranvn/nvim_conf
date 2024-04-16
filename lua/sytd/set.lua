@@ -4,7 +4,8 @@ vim.opt.scrolloff = 10
 -- See `:help vim.o`
 
 -- Set highlight on search
-vim.o.hlsearch = false
+vim.o.hlsearch = true
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- Make line numbers default
 vim.o.number = true
