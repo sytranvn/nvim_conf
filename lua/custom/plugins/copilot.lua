@@ -8,4 +8,7 @@ return {
       panel = { enabled = false },
     })
   end,
+  enabled = function()
+    return vim.g.CopilotEnabled
+  end
 }
