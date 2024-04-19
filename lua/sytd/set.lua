@@ -54,3 +54,5 @@ vim.o.exrc = true
 
 
 vim.g.navic_silence = true
+vim.opt.list = true
+vim.opt.listchars = { eol = '↵', tab = '>-' }
