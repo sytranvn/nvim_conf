@@ -50,6 +50,7 @@ return {
       end
     end, {})
 
+    vim.api.nvim_create_user_command("BuffCloseAll", ":bufdo bd", {})
     vim.keymap.set('n', 'gn', ':bn<CR>', { silent = true })
     vim.keymap.set('n', 'gN', ':bp<CR>', { silent = true })
   end
