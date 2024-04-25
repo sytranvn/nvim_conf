@@ -38,15 +38,8 @@ return {
     })
     vim.api.nvim_create_user_command("BuffCloseOthers", function()
       local bufs = vim.api.nvim_list_bufs()
-      local current_buf = vim.api.nvim_get_current_buf()
-      for _, i in ipairs(bufs) do
-        if i ~= current_buf then
-          if vim.api.nvim_buf_get_option(i, "modified") then
-            vim.api.nvim_echo({ { "Unsaved file " .. vim.api.nvim_buf_get_name(i), "WarningMsg" } }, false, {})
-          else
-            vim.api.nvim_buf_delete(i, {})
-          end
-        end
+      for b in bufs do
+        b:close()
       end
     end, {})
 
