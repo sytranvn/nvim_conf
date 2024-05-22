@@ -7,7 +7,11 @@ return {
   -- See `:help lualine.txt`
   config = function()
     local breadcrumb = function()
+      if vim.fn.wordcount().bytes > 200000 then
+        return "󰔟"
+      end
       local breadcrumb_status_ok, breadcrumb = pcall(require, "breadcrumb")
+      require("breadcrumb")
       if not breadcrumb_status_ok then
         return
       end
