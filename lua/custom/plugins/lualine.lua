@@ -26,7 +26,7 @@ local function merge_colors(foreground, background)
 end
 
 local function get_dap_repl_winbar(active)
-  local get_mode = require("lualine.highlight").get_mode_suffix
+  -- local get_mode = require("lualine.highlight").get_mode_suffix
 
   return function()
     local filetype = vim.bo.filetype
@@ -35,8 +35,8 @@ local function get_dap_repl_winbar(active)
     if not vim.tbl_contains(disabled_filetypes, filetype) then
       return ""
     end
-
-    local background_color = string.format("lualine_b" .. "%s", active and get_mode() or "_inactive")
+    -- active and get_mode() or
+    local background_color = string.format("lualine_b" .. "%s", "_inactive")
 
     local controls_string = "%#" .. background_color .. "#"
     for element in require("dapui.controls").controls():gmatch("%S+") do
