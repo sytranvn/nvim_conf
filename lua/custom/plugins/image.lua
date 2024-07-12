@@ -36,7 +36,7 @@ return {
       hijack_file_patterns = { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp" }, -- render image files as images when opened
     })
   end,
-  build = "luarocks --lua-version=" .. version .. " install magick",
+  build = "luarocks --lua-version=" .. version .. " install --local magick",
   enabled = function()
     return true -- jit.os == "Linux"
   end
