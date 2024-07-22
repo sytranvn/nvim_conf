@@ -102,12 +102,15 @@ return {
       },
       extensions = { M }
     })
-    vim.api.nvim_create_user_command("BuffCloseOthers", function()
+    vim.api.nvim_create_user_command("BuffCloseOthers", function(options)
       local bufs = vim.api.nvim_list_bufs()
-      for b in bufs do
-        b:close()
+      local current_buf = vim.api.nvim_get_current_buf()
+      for _, i in ipairs(bufs) do
+        if i ~= current_buf then
+          vim.api.nvim_buf_delete(i, { force = options.bang })
+        end
       end
-    end, {})
+    end, { bang = true })
 
     vim.api.nvim_create_user_command("BuffCloseAll", ":bufdo bd", {})
     vim.keymap.set('n', 'gn', ':bn<CR>', { silent = true })
