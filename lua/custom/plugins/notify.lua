@@ -1,7 +1,7 @@
 -- lazy.nvim
 return {
   "rcarriga/nvim-notify",
-  -- event = "VeryLazy",
+  event = "VeryLazy",
   dependencies = {
   },
   config = function()
