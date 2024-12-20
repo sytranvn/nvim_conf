@@ -10,41 +10,13 @@ local breadcrumb = require("breadcrumb")
 local servers = {
   clangd = {},
   -- gopls = {},
-  pylsp = {
-    plugins = {
-      flake8 = {
-        enabled = true
-      },
-      pylint = {
-        enabled = false
-      },
-      pycodestyle = {
-        enalbed = false
-      },
-      black = {
-        enabled = true,
-        line_length = 120
-      },
-    }
-  },
   pyright = {
-    python = {
-      analysis = {
-        useLibraryCodeForTypes = true,
-        diagnosticSeverityOverrides = {
-          reportGeneralTypeIssues = false,
-          reportOptionalMemberAccess = false,
-          reportOptionalSubscript = false,
-          reportPrivateImportUsage = false,
-          reportOptionalCall = false,
-          reportOptionalOperand = false,
-          reportMissingImports = false,
-        }
-      }
-    },
+    useLibraryCodeForTypes= false
+  },
+  pylsp = {
   },
   -- rust_analyzer = {},
-  tsserver = {},
+  ts_ls = {},
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
@@ -53,7 +25,7 @@ local servers = {
   },
   jsonls = {
 
-  }
+  },
 }
 
 --  This function gets run when an LSP connects to a particular buffer.
@@ -64,15 +36,6 @@ local on_attach = function(client, bufnr)
     end
 
     vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
-  end
-
-  local rc = client.server_capabilities
-
-  if client.name == 'pyright' then
-    rc.hover = false
-    rc.definition = false
-    rc.signature_help = false
-    rc.renameProvider = false
   end
 
   if client.server_capabilities.documentSymbolProvider then
