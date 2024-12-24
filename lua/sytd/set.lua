@@ -14,7 +14,9 @@ vim.o.cursorline = true
 
 -- reload buffers if content changed on disk
 vim.o.autoread = true
-vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
+vim.api.nvim_create_autocmd(
+{ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" },
+{
 	command = "if mode() != 'c' | checktime | endif",
 	pattern = { "*" },
 })
@@ -56,3 +58,4 @@ vim.o.exrc = true
 vim.g.navic_silence = true
 vim.opt.list = true
 vim.opt.listchars = { eol = '↵', tab = '>-' }
+
