@@ -244,10 +244,10 @@ end, { desc = '[F]ind [I]con' })
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python',
-    'rust', 'vimdoc', 'vim', 'bash', 'json', 'typescript', 'make', 'markdown', 'markdown_inline'
+    'rust', 'vimdoc', 'vim', 'bash', 'json', 'typescript', 'make', 'markdown', 'markdown_inline','latex'
   },
   modules = {},
-  ignore_install = {},
+  ignore_install = { 'org' },
   sync_install = false,
 
   -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
@@ -364,6 +364,7 @@ cmp.setup {
     { name = 'nvim_lsp', priority = 4 },
     { name = 'copilot',  priority = 3 },
     { name = 'luasnip', priority = 2 },
+    { name = 'orgmode', priority = 1 },
     { name = 'emoji', priority = 1 },
   },
 }
