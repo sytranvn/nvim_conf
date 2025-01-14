@@ -14,6 +14,7 @@ local servers = {
     useLibraryCodeForTypes= false
   },
   pylsp = {
+      configurationSources = {'flake8'},
   },
   -- rust_analyzer = {},
   ts_ls = {},
