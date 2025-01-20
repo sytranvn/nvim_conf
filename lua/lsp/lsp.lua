@@ -11,10 +11,22 @@ local servers = {
   clangd = {},
   -- gopls = {},
   pyright = {
-    useLibraryCodeForTypes= false
+    useLibraryCodeForTypes = false
   },
   pylsp = {
-      configurationSources = {'flake8'},
+    configurationSources = { 'black' },
+    plugins = {
+      black = {
+        enabled = true,
+        cache_config = true,
+      },
+      flake8 = {
+        enabled = false
+      },
+      pyflakes = { enabled = false },
+      pylint = { enabled = false },
+      pycodestyle = { enabled = true }
+    }
   },
   -- rust_analyzer = {},
   ts_ls = {},
@@ -41,6 +53,10 @@ local on_attach = function(client, bufnr)
 
   if client.server_capabilities.documentSymbolProvider then
     breadcrumb.attach(client, bufnr)
+  end
+  
+  if client.name == "pyright" then
+    client.server_capabilities.documentFormattingProvider = false
   end
 
   nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
