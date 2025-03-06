@@ -1,7 +1,6 @@
 return {
   "loctvl842/breadcrumb.nvim",
-  config = function()
-    require("breadcrumb").setup({
+    opts = {
       disabled_filetype = {
         "",
         "help",
@@ -41,6 +40,5 @@ return {
         component = "BreadcrumbText",
         separator = "BreadcrumbSeparator",
       },
-    })
-  end
+  }
 }

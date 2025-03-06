@@ -11,9 +11,7 @@ return {
 
         "nvim-tree/nvim-web-devicons"
     },
-    config = function()
-        require('markview').setup(
-            {
+    opts = {
                 latex = {
                     enable = true,
                     inline = {
@@ -45,6 +43,4 @@ return {
                     },
                 }
             }
-        )
-    end
 }

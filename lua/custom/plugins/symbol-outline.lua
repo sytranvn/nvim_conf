@@ -1,7 +1,12 @@
 return {
   'simrat39/symbols-outline.nvim',
-  config = function()
-    require('symbols-outline').setup()
-    vim.api.nvim_set_keymap('n', '<leader>so', ':SymbolsOutline<CR>', { desc = '[S]ymbol [O]utline' })
-  end
+  config = true, -- needed to trigger setup call
+  keys = {
+    {
+      "<leader>o",
+      "<cmd>SymbolsOutline<cr>",
+      desc = "[S]ymbol [O]utline",
+      mode = "n", -- normal mode
+    },
+  },
 }
