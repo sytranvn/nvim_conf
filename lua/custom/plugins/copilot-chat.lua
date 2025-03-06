@@ -10,5 +10,14 @@ return {
     debug = false, -- Enable debugging
     -- See Configuration section for rest
   },
+  -- Add key mapping
+  keys = {
+    {
+      "<leader>cc",
+      "<cmd>CopilotChat<cr>",
+      desc = "CopilotChat - Open chat",
+      -- mode = "n", -- normal mode
+    },
+  },
   -- See Commands section for default commands if you want to lazy load on them
 }
