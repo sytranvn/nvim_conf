@@ -11,10 +11,15 @@ local servers = {
   clangd = {},
   -- gopls = {},
   pyright = {
-    useLibraryCodeForTypes = false
+    python = {
+      analysis = {
+        typeCheckingMode = 'strict',
+        languageServerMode = 'light',
+      },
+    },
   },
   pylsp = {
-    configurationSources = { 'black' },
+    configurationSources = { 'pycodestyle' },
     plugins = {
       black = {
         enabled = true,
@@ -54,7 +59,7 @@ local on_attach = function(client, bufnr)
   if client.server_capabilities.documentSymbolProvider then
     breadcrumb.attach(client, bufnr)
   end
-  
+
   if client.name == "pyright" then
     client.server_capabilities.documentFormattingProvider = false
   end
@@ -118,6 +123,9 @@ M.setup = function()
 
   mason_lspconfig.setup_handlers {
     function(server_name)
+      if vim.g.project_lsps and vim.g.project_lsps[server_name] then
+        servers[server_name] = vim.tbl_deep_extend("force", servers[server_name], vim.g.project_lsps[server_name])
+      end
       require('lspconfig')[server_name].setup {
         capabilities = capabilities,
         on_attach = on_attach,
