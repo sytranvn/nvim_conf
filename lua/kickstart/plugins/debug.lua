@@ -33,7 +33,7 @@ return {
     require('mason-nvim-dap').setup {
       -- Makes a best effort to setup the various debuggers with
       -- reasonable debug configurations
-      automatic_installation = false,
+      automatic_installation = true,
 
       -- You can provide additional configuration to the handlers,
       -- see mason-nvim-dap README for more information
@@ -79,7 +79,45 @@ return {
       --    Feel free to remove or use ones that you like more! :)
       --    Don't feel like these are good choices.
       icons = { expanded = '▾', collapsed = '▸', current_frame = '*' },
+      mappings = {
+
+      },
+      element_mappings = {
+      },
+      expand_lines = true,
+      floating = {
+        mappings = {
+          close = "q"
+        },
+        border = "",
+      },
+      force_buffers = true,
+      layouts = {
+        {
+          elements = {
+            { id = "console", size = 0.25 },
+            { id = "scopes",  size = 0.50 },
+            { id = "repl",    size = 0.25 },
+          },
+          position = "left",
+          size = 50,
+        },
+        {
+          elements = {
+            { id = "stacks",      size = 0.65 },
+            { id = "watches",     size = 0.15 },
+            { id = "breakpoints", size = 0.20 },
+          },
+          position = "bottom",
+          size = 15,
+        },
+      },
+      render = {
+        indent = 2
+      },
       controls = {
+        enabled = true,
+        element = "scopes",
         icons = {
           pause = '⏸',
           play = '▶',
@@ -87,15 +125,16 @@ return {
           step_over = '',
           step_out = '',
           step_back = '',
-          run_last = '▶▶',
+          run_last = '▶',
           terminate = '⏹',
         },
       },
     }
 
     dap.listeners.after.event_initialized['dapui_config'] = dapui.open
-    dap.listeners.before.event_terminated['dapui_config'] = dapui.close
-    dap.listeners.before.event_exited['dapui_config'] = dapui.close
+    -- keep dapui open to see any result, run :DapClose to close instead
+    -- dap.listeners.before.event_terminated['dapui_config'] = dapui.close
+    -- dap.listeners.before.event_exited['dapui_config'] = dapui.close
 
 
     dap.adapters.codelldb = {
@@ -106,8 +145,6 @@ return {
         args = { "--port", "${port}" },
       }
     }
-
-    require('dap.ext.vscode').load_launchjs()
 
     -- Install golang specific config
     require('dap-go').setup()

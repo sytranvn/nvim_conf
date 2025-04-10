@@ -22,15 +22,23 @@ local servers = {
     configurationSources = { 'pycodestyle' },
     plugins = {
       black = {
-        enabled = true,
-        cache_config = true,
+        enabled = false,
+        cache_config = false,
       },
       flake8 = {
         enabled = false
       },
       pyflakes = { enabled = false },
       pylint = { enabled = false },
-      pycodestyle = { enabled = true }
+      pycodestyle = { enabled = false },
+      ruff = {
+        enabled = true,                      -- Enable the plugin
+        formatEnabled = true,                -- Enable formatting using ruffs formatter
+        extendIgnore = { "C90" },            -- Rules that are additionally ignored by ruff
+        format = { "I" },                    -- Rules that are marked as fixable by ruff that should be fixed when running textDocument/formatting
+        -- Rules that are ignored when a pyproject.toml or ruff.toml is present:
+        lineLength = 88,                               -- Line length to pass to ruff checking and formatting
+      },
     }
   },
   -- rust_analyzer = {},
